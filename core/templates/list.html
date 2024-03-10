@@ -6,7 +6,11 @@
   <div class="card mt-3" style="width: 18rem">
     <img src="{{ dog.image.url }}" class="card-img-top" alt="{{ dog.name }}" />
     <div class="card-body">
-      <p class="card-text">{{ dog.name }}</p>
+      <p class="card-text fw-bold">{{ dog.name }}</p>
+      <p>Size (bytes): {{ dog.image.size }}</p>
+      <p>Width: {{ dog.image.width }}</p>
+      <p>Height: {{ dog.image.height }}</p>
+      <a href="{% url 'delete' dog.pk %}" class="btn btn-danger">Delete</a>
     </div>
   </div>
   <br />

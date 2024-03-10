@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import DogForm
 from .models import Dog
 
@@ -14,5 +14,10 @@ def index(request):
 
 def list_dogs(request):
     dogs = Dog.objects.all()
-    context = {'dogs':dogs}
+    context = {'title':'Dogs list', 'dogs':dogs}
     return render(request, 'list.html', context)
+
+def delete(request, pk):
+    dog = get_object_or_404(Dog, pk=pk)
+    dog.delete()
+    return redirect('dogs')
