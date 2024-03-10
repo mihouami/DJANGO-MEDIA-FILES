@@ -1,20 +1,28 @@
 {% extends 'base.html' %} {% load widget_tweaks %} {% block body %}
-<h1>Hello</h1>
+<div class="container w-25 mt-5">
+  <h1 class="my-3">DogForm</h1>
+  <a href="{% url 'dogs' %}">View all dogs</a>
 
-<form mehtod="post" enctype="multipart/form-data">
-  {% csrf_token %}
+  <form class="mt-3" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
 
-  <div class="mb-2">
-    {{ form.name|add_label_class:"form-label"}}<!---->
-    {% render_field form.name class="form-control" %}
-  </div>
+    <div class="mb-2">
+      {{ form.name|add_label_class:"form-label"}}<!---->
+      {% render_field form.name class="form-control" %}
+    </div>
 
-  <div class="mb-3">
-    {{ form.image|add_label_class:"form-label"}}<!---->
-    {% render_field form.image class="form-control" %}
-  </div>
+    <div class="mb-3">
+      {{ form.image|add_label_class:"form-label"}}<!---->
+      {% render_field form.image class="form-control" %}
+    </div>
 
-  <input type="submit" value="Submit" class="btn btn-primary" />
-</form>
+    <input
+      formnovalidate
+      type="submit"
+      value="Submit"
+      class="btn btn-primary"
+    />
+  </form>
+</div>
 
 {% endblock %}
